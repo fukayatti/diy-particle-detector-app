@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { AppContext } from "../../contexts/AppContext";
+import { useTheme } from "@react-navigation/native";
 
 /**
  * Settings画面
@@ -16,6 +17,8 @@ export default function SettingsScreen() {
     thresholdCH2,
     setThresholdCH2,
   } = useContext(AppContext);
+
+  const { colors } = useTheme();
 
   // ローカルの入力用ステート
   const [localWsUrl, setLocalWsUrl] = useState(websocketUrl);
@@ -33,26 +36,38 @@ export default function SettingsScreen() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>WebSocket URL:</Text>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
+      <Text style={[styles.label, { color: colors.text }]}>WebSocket URL:</Text>
       <TextInput
-        style={styles.input}
+        style={[
+          styles.input,
+          { color: colors.text, borderColor: colors.border },
+        ]}
         value={localWsUrl}
         onChangeText={setLocalWsUrl}
+        placeholderTextColor={colors.text + "80"} // 80 adds 50% transparency
       />
-      <Text style={styles.label}>Threshold CH1:</Text>
+      <Text style={[styles.label, { color: colors.text }]}>Threshold CH1:</Text>
       <TextInput
-        style={styles.input}
+        style={[
+          styles.input,
+          { color: colors.text, borderColor: colors.border },
+        ]}
         value={localThresholdCH1}
         onChangeText={setLocalThresholdCH1}
         keyboardType="numeric"
+        placeholderTextColor={colors.text + "80"}
       />
-      <Text style={styles.label}>Threshold CH2:</Text>
+      <Text style={[styles.label, { color: colors.text }]}>Threshold CH2:</Text>
       <TextInput
-        style={styles.input}
+        style={[
+          styles.input,
+          { color: colors.text, borderColor: colors.border },
+        ]}
         value={localThresholdCH2}
         onChangeText={setLocalThresholdCH2}
         keyboardType="numeric"
+        placeholderTextColor={colors.text + "80"}
       />
       <View style={styles.updateButton}>
         <Button title="Update Settings" onPress={handleUpdate} />
@@ -72,7 +87,6 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
     padding: 8,
     marginTop: 4,
     borderRadius: 4,

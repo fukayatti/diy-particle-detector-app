@@ -4,6 +4,7 @@ import { LineChart } from "react-native-chart-kit";
 import * as Notifications from "expo-notifications";
 import { io, Socket } from "socket.io-client";
 import { AppContext } from "../../contexts/AppContext";
+import { useTheme } from "@react-navigation/native";
 
 /**
  * 受信データの型定義
@@ -23,6 +24,7 @@ type DataPoint = {
 export default function ExploreScreen() {
   const { websocketUrl, thresholdCH1, thresholdCH2 } = useContext(AppContext);
   const [data, setData] = useState<DataPoint[]>([]);
+  const { colors, dark } = useTheme();
 
   useEffect(() => {
     let socket: Socket | null = null;
@@ -78,21 +80,36 @@ export default function ExploreScreen() {
     legend: ["CH1", "CH2"],
   };
 
+  // Define chart colors based on theme
+  const chartBackground = dark ? "#121212" : "#ffffff";
+  const chartTextColor = dark
+    ? "rgba(255, 255, 255, 0.8)"
+    : "rgba(0, 0, 0, 0.8)";
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>リアルタイムデータ</Text>
+    <ScrollView
+      contentContainerStyle={[
+        styles.container,
+        { backgroundColor: colors.background },
+      ]}
+    >
+      <Text style={[styles.title, { color: colors.text }]}>
+        リアルタイムデータ
+      </Text>
       {data.length > 0 ? (
         <LineChart
           data={chartData}
           width={Dimensions.get("window").width - 16}
           height={220}
           chartConfig={{
-            backgroundColor: "#ffffff",
-            backgroundGradientFrom: "#ffffff",
-            backgroundGradientTo: "#ffffff",
+            backgroundColor: chartBackground,
+            backgroundGradientFrom: chartBackground,
+            backgroundGradientTo: chartBackground,
             decimalPlaces: 2,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-            labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+            color: (opacity = 1) =>
+              chartTextColor.replace("0.8", opacity.toString()),
+            labelColor: (opacity = 1) =>
+              chartTextColor.replace("0.8", opacity.toString()),
             style: {
               borderRadius: 16,
             },
@@ -106,7 +123,9 @@ export default function ExploreScreen() {
           style={styles.chart}
         />
       ) : (
-        <Text>まだデータは受信していません。</Text>
+        <Text style={{ color: colors.text }}>
+          まだデータは受信していません。
+        </Text>
       )}
     </ScrollView>
   );

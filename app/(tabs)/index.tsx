@@ -1,14 +1,19 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { useTheme } from "@react-navigation/native";
 
 /**
  * ホーム画面
  */
 export default function HomeScreen() {
+  const { colors } = useTheme();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Expo Router Sample</Text>
-      <Text style={styles.description}>
+      <Text style={[styles.title, { color: colors.text }]}>
+        Expo Router Sample
+      </Text>
+      <Text style={[styles.description, { color: colors.text }]}>
         このアプリは、OWON
         VDS1022オシロスコープからWebSocket経由でデータを受信し、グラフ表示や通知を行います。
       </Text>
