@@ -11,7 +11,10 @@ A React Native mobile application built with Expo that connects to an OWON VDS10
 
 ## 📸 Screenshots
 
-_[Screenshots would be added here]_
+<div style="display: flex; justify-content: space-around; align-items: center;">
+    <img src="/assets/images/index.png" alt="Index Screen" style="width: 45%; border: 1px solid #ccc; border-radius: 8px;" />
+    <img src="/assets/images/settings.png" alt="Settings Screen" style="width: 45%; border: 1px solid #ccc; border-radius: 8px;" />
+</div>
 
 ## 🛠️ Requirements
 
