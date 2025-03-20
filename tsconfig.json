@@ -3,14 +3,26 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "incremental": true,
+    "module": "esnext",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
+    "contexts/AppContext.js",
     "expo-env.d.ts",
-    "contexts/AppContext.js"
+    ".next/types/**/*.ts"
   ]
 }
