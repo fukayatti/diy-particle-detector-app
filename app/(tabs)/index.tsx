@@ -11,7 +11,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={[styles.title, { color: colors.text }]}>
-        Expo Router Sample
+        DIY Particle Detector App
       </Text>
       <Text style={[styles.description, { color: colors.text }]}>
         このアプリは、OWON
