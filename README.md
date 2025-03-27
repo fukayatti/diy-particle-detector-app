@@ -1,6 +1,6 @@
 # 🌌 DIY Particle Detector
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-react-native-web&project-name=with-react-native-web&repository-name=with-react-native-web)
+[![Deploy with Vercel](https://vercel.com/button)](https://diy-particle-detector-app.vercel.app/)
 
 A React Native mobile application built with Expo that connects to an OWON VDS1022 oscilloscope via WebSocket to display real-time data and send notifications when thresholds are exceeded.
 
