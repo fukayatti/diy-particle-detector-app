@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- 背景：角丸の四角形 -->
+  <rect width="64" height="64" rx="12" fill="#2c3e50"/>
+  
+  <!-- 波形: Cubic Bezier 曲線を使用 -->
+  <path d="M8 40 
+           C 18 20, 26 20, 36 40 
+           S 54 60, 56 40" 
+        fill="none" 
+        stroke="#ecf0f1" 
+        stroke-width="4" 
+        stroke-linecap="round"/>
+  
+  <!-- 通知/検出の強調: 波形上の赤い点 -->
+  <circle cx="36" cy="40" r="3" fill="#e74c3c"/>
+</svg>
